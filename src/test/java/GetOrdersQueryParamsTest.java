@@ -1,4 +1,6 @@
 import assertions.Status;
+import io.qameta.allure.Step;
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.junit.Test;
@@ -53,6 +55,7 @@ public class GetOrdersQueryParamsTest {
 
         }
     @Test
+    @DisplayName("Check list of orders presented in response with query params")
     public void differentQueryParamsReturnsListOfOrders(){
         Response response = ApiClient.getOrdersList(params);
 

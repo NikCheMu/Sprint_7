@@ -1,4 +1,6 @@
 import assertions.Status;
+import io.qameta.allure.Step;
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,11 +14,13 @@ public class GetOrdersListTest extends BaseTest{
     public Order[] orderList;
 
     @Before
+    @Step("Prepare data for tests")
     public void setUp() {
         orderList = new Order[0];
     }
 
     @Test
+    @DisplayName("Check list of orders presented in response with no query params")
     public void getOrdersListReturnListOfOrders(){
         Response response = ApiClient.getOrdersList(specification.defaultSpecification());
 

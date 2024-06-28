@@ -1,4 +1,5 @@
 import assertions.Status;
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -39,6 +40,7 @@ public class CreateOrderDifferentColorTest extends BaseTest{
     }
 
     @Test
+    @DisplayName("Check different colours order creation")
     public void successOrderCreatedReturn201AndTrackNumber(){
         Response response =  ApiClient.postOrder(orderModel,specification.defaultSpecification());
         Status.assertCreated(response);

@@ -1,5 +1,6 @@
 import assertions.Status;
 import errorMessages.LoginCurierErrorMessage;
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -30,6 +31,7 @@ public class LoginCurierWrongRequestModelTest extends BaseTest{
     }
 
     @Test
+    @DisplayName("Check login and password are required at authorization")
     public void loginAndPasswordAreRequired() {
         Response logInResponse = ApiClient.postLoginCurier(requestModel,specification.defaultSpecification());
         Status.assertBadRequest(logInResponse);

@@ -1,5 +1,6 @@
 import assertions.Status;
 import errorMessages.LoginCurierErrorMessage;
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -30,6 +31,7 @@ public class LoginCurierWrongCredentialsTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("Check login with wrong credentials")
     public void loginWithWrongCredentialsReturn404AndErrorMessage(){
         Response logInResponse = ApiClient.postLoginCurier(requestModel,specification.defaultSpecification());
         Status.assertNotFound(logInResponse);

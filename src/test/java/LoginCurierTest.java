@@ -1,4 +1,6 @@
 import assertions.Status;
+import io.qameta.allure.Step;
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,6 +14,7 @@ public class LoginCurierTest extends BaseTest{
 
 
     @Before
+    @Step("Prepare data for tests")
     public void setUp() {
         ///Тут по хорошему нужно из бд получить ранее зарегистрированного пользователя(бэкап с прода к прим.)
         ///Но на тесте нету бд, поэтому вне проекта был зарегистрирован пользователь
@@ -19,6 +22,7 @@ public class LoginCurierTest extends BaseTest{
     }
 
     @Test
+    @DisplayName("Check already registered user can login")
     public void succesfullLoginReturns200AndId(){
         Response logInResponse = ApiClient.postLoginCurier(alreadyRegisteredCurierLogin,specification.defaultSpecification());
         Status.assertOk(logInResponse);

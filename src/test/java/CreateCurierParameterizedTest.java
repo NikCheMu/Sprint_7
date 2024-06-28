@@ -1,5 +1,6 @@
 import assertions.Status;
 import errorMessages.CreateCurierErrorMessage;
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -30,6 +31,7 @@ import responseModels.CreateCurierErrorResponse;
     }
 
     @Test
+    @DisplayName("Check login and password are required at registration")
     public void loginAndPasswordAreRequired(){
         Response createResponse = ApiClient.postCreateCurier(curierModel, specification.defaultSpecification());
         Status.assertBadRequest(createResponse);
